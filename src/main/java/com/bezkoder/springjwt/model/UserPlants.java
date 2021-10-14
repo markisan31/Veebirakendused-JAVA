@@ -1,5 +1,6 @@
 package com.bezkoder.springjwt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,12 +14,15 @@ import java.time.Instant;
 public class UserPlants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(name = "plant_id")
+    @JsonIgnore
     private Long plantId;
 
     @Column(name = "user_id")
+    @JsonIgnore
     private Long userId;
 
     @Column(name = "name")
@@ -28,8 +32,9 @@ public class UserPlants {
     private String category;
 
     @Column(name = "created_at")
+    @JsonIgnore
     private Instant createdAt = Instant.now();
 
     @Column(name = "next_watering")
-    private int next_watering;
+    private Instant next_watering;
 }
