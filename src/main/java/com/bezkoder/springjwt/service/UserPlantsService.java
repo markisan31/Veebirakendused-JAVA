@@ -43,9 +43,9 @@ public class UserPlantsService {
         }
     }
 
-    public List<UserPlants> findAll() {
+    public List<UserPlants> findAll(Long id) {
         List<UserPlants> plants = new ArrayList<>();
-        userPlantsRepository.findAllByUserId(1l).forEach(p -> plants.add(p));
+        userPlantsRepository.findAllByUserId(id).forEach(p -> plants.add(p));
         return plants;
     }
 }

@@ -21,17 +21,17 @@ public class UserPlantsController {
         this.userPlantService = userPlantService;
     }
 
-    @GetMapping
+    @GetMapping("/user/{id}")
 //    @PreAuthorize("hasRole('ADMIN')")
-    public List<UserPlants> findAll() {
-        return userPlantService.findAll();
+    public List<UserPlants> findAll(@PathVariable("id") Long id) {
+        return userPlantService.findAll(id);
     }
 
-    @GetMapping("/{id}")
-    @PreAuthorize("authentication.principal.equals(#userId)")
-    public UserPlants get(@PathVariable("id") Long id) {
-        return userPlantService.get(id);
-    }
+//    @GetMapping("/{id}")
+//    @PreAuthorize("authentication.principal.equals(#userId)")
+//    public UserPlants get(@PathVariable("id") Long id) {
+//        return userPlantService.get(id);
+//    }
 
     @PostMapping("")
     @PreAuthorize("hasRole('USER') and authentication.principal.equals(#userId)")

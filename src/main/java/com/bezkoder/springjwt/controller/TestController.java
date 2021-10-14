@@ -3,6 +3,7 @@ package com.bezkoder.springjwt.controller;
 import com.bezkoder.springjwt.repository.PlantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,9 @@ public class TestController {
 	
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-	public String userAccess() {
-		return "User Content.";
+	public String userAccess(@CurrentSecurityContext(expression="authentication?.name")
+										 String username) {
+		return "User Content." + username;
 	}
 
 	@GetMapping("/mod")
