@@ -39,5 +39,6 @@ public class UserPlants {
     private Instant next_watering;
 
     @Column(name = "are_watered")
+    @JsonIgnore
     private boolean areWatered = false;
 }
