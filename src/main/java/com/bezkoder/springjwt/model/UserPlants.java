@@ -37,4 +37,7 @@ public class UserPlants {
 
     @Column(name = "next_watering")
     private Instant next_watering;
+
+    @Column(name = "are_watered")
+    private boolean areWatered = false;
 }
